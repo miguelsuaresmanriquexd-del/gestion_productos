@@ -1,5 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../app/config/database.php';
+require_once __DIR__ . '/../app/controller/ProductoController.php';
 
-$config = new database();
+$controller = new ProductoController();
+$controller->index();
