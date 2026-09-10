@@ -13,6 +13,7 @@ class producto{
         public function getAll()
     {
         $sql = "SELECT 
+                producto.id,
                 producto.nombre, 
                 producto.precio, 
                 producto.categoria, 
