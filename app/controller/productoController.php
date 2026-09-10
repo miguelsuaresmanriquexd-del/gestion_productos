@@ -7,12 +7,14 @@ class ProductoController
     {
         $modelproducto = new producto();
 
-
+       
         $productos = $modelproducto->getALL();
-
-
         $producto_unico = $modelproducto->getById(5);
 
+        
+        $categorias = $modelproducto->getCategorias();
+
+        
         require_once __DIR__ . '/../views/productos/index.php';
     }
 }
