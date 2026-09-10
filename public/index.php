@@ -10,3 +10,8 @@ require_once __DIR__ . '/../app/controller/clienteController.php';
 
 $controller = new clienteController();
 $controller->index();
+
+require_once __DIR__ . '/../app/controller/proveedoresController.php';
+
+$controller = new proveedoresController();
+$controller->index();
