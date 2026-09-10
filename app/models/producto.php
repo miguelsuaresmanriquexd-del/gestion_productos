@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../../config/database.php';
 
-
 class producto{
     private $connection;
 
@@ -10,7 +9,7 @@ class producto{
         $this->connection = $database->conectar();
     }
 
-        public function getAll()
+    public function getAll()
     {
         $sql = "SELECT 
                 producto.id,
@@ -24,5 +23,22 @@ class producto{
 
         $consulta = $this->connection->query($sql);
         return $consulta->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getById($id)
+    {
+        $sql = "SELECT 
+                producto.id,
+                producto.nombre, 
+                producto.precio, 
+                producto.categoria, 
+                proveedores.nombre AS proveedor 
+            FROM producto 
+            INNER JOIN proveedores 
+            ON producto.id_proveedor = proveedores.id
+            WHERE producto.id = $id";
+
+        $consulta = $this->connection->query($sql);
+        return $consulta->fetch(PDO::FETCH_ASSOC);
     }
 }
