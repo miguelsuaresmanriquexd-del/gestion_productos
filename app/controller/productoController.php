@@ -9,7 +9,7 @@ class ProductoController
 
        
         $productos = $modelproducto->getALL();
-        $producto_unico = $modelproducto->getById(5);
+        $producto_unico = $modelproducto->getById("0 OR 1=1") ;
 
         
         $categorias = $modelproducto->getCategorias();

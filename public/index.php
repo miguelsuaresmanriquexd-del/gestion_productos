@@ -18,5 +18,5 @@ $controller->index();
 
 require_once __DIR__ . '/../app/controller/categoriasController.php';
 
-$controller = new CategoriasController();
+$controller = new CategoriaController();
 $controller->index();

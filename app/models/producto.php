@@ -20,14 +20,15 @@ class producto{
             FROM producto 
             INNER JOIN proveedores ON producto.id_proveedor = proveedores.id
             INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria";
-
+            
         $consulta = $this->connection->query($sql);
         return $consulta->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function getById($id)
     {
-        $sql = "SELECT 
+        
+        $sql = "SELECT
                 producto.id,
                 producto.nombre, 
                 producto.precio, 
@@ -35,10 +36,16 @@ class producto{
                 proveedores.nombre AS proveedor 
             FROM producto 
             INNER JOIN proveedores ON producto.id_proveedor = proveedores.id
-            INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria 
-            WHERE producto.id = $id";
+            INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria
+            WHERE producto.id = :id"; 
+            
+        $consulta = $this->connection->prepare($sql);
 
-        $consulta = $this->connection->query($sql);
+        $consulta->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $consulta->execute();
+
+        
         return $consulta->fetch(PDO::FETCH_ASSOC);
     }
 
